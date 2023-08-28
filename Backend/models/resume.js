@@ -6,6 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
+    contactInfo: {
+      type: DataTypes.JSON,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false
@@ -15,19 +18,28 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     education: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: false,
     },
     experience: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: false,
     },
+    certification: {
+      type: DataTypes.JSON
+    },
+    award: {
+      type: DataTypes.STRING,
+    },
+    skill: {
+      type: DataTypes.JSON,
+    }
   });
 
   resume.associate = (models) => {
     resume.belongsTo(models.jobSeeker, {
       onDelete: 'CASCADE'
-    }); 
+    });
   };
 
   return resume;
