@@ -10,10 +10,13 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     });
-    employer.associate = (models)=>{
+    employer.associate = (models) => {
         employer.belongsTo(models.user, {
-            onDelete:"cascade"
-        })
+            onDelete: "cascade"
+        });
+        employer.belongsTo(models.post, {
+            onDelete: "cascade"
+        });
     }
     return employer;
 };
